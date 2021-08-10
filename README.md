@@ -1,0 +1,2 @@
+# maniabot
+a bot ig
