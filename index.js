@@ -10,14 +10,28 @@ const client = new commando.Client({
     unknownCommandResponse: true,
 });
 
+const config = require("./config.json");
+const { time } = require('console');
+
 client
 	.on('error', console.error)
 	.on('warn', console.warn)
 	.on('debug', console.log)
-	.on('ready', () => {
-		console.log(`Client ready; logged in as ${client.user.username}#${client.user.discriminator} (${client.user.id})`);
+	.on('guildMemberAdd', member => {
+		var channel= member.guild.channels.find("name", "CHANNEL_NAME"); 
+		  let embed = new Discord.RichEmbed()
+			.setAuthor(`${member.guild.name}`)
+			.setColor(`RANDOM`)
+			.addField('Welcome', `Hi ${member} welcome to ${member.guild.name}`)
+				.setFooter(`We now have ${member.guild.memberCount} users`)
+				.setTimestamp();
+			return;  
 	})
+	.on("ready", () => {
+		console.log(`Client ready; logged in as ${client.user.username}#${client.user.discriminator} (${client.user.id})`);
+	  });
 
+	  
 const sqlite = require('sqlite');
 const sqlite3 = require('sqlite3');
 

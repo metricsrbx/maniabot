@@ -1,2 +1,0 @@
-# maniabot
-a bot ig

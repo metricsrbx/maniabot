@@ -27,19 +27,23 @@ module.exports = class announceCommand extends Command {
                     type:"string",
                     prompt:"What's your username?",
                     key:"moderator",
-                },
-                {
-                    type:"string",
-                    prompt:"What channel shall this be sent?",
-                    key:"chanel",
                 }
             ]
         })
     }
-    run(msg, { title, desc, moderator, chanel}) {
-        
+    run(msg, { title, desc, moderator }) {
+  // reading content to be announced
   
-    }
+  // the embed 
+  const announceEmbed = new Discord.MessageEmbed()
+    .setColor("#ff1233")
+    .setTitle(title)
+    .setFooter("Announcement by " + moderator)
+    .setDescription(desc);
+
+    // add more embed configs if you like
+  msg.channel.send(announceEmbed);
+}
 }
 
 
